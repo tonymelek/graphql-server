@@ -12,6 +12,10 @@ const context = {
 };
 
 const server = new ApolloServer({
+  cors: {
+    origin: '*',
+    credentials: true
+  },
   typeDefs,
   resolvers,
   context,
@@ -19,6 +23,6 @@ const server = new ApolloServer({
 
 server.listen({
   port: GRAPHQL_PORT,
-}).then( ({ url }) => {
+}).then(({ url }) => {
   console.log(`graphql server url: ${url}`);
-} );
+});

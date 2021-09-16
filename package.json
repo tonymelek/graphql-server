@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "babel graphql-server --out-dir dist",
-    "start": "nodemon dist/index.js"
+    "start": "concurrently \"nodemon dist/index.js\"  \"cd client&&npm run start\""
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
