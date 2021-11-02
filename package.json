@@ -4,17 +4,21 @@
   "private": true,
   "dependencies": {
     "apollo-server": "^3.3.0",
+    "firebase": "^9.0.2",
+    "firebase-admin": "^9.11.1",
     "graphql": "^15.5.3",
     "graphql-subscriptions": "^1.2.1"
   },
   "scripts": {
     "build": "babel graphql-server --out-dir dist",
-    "start": "concurrently \"nodemon dist/index.js\"  \"cd client&&npm run start\""
+    "start": "concurrently \"nodemon dist/index.js\"  \"cd client&&npm run start\"",
+    "gql": "yarn build && nodemon dist/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.4",
     "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.15.6",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6"
   }
 }

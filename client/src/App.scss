@@ -1,0 +1,12 @@
+@import '~bootstrap/scss/bootstrap.scss';
+.modal-try{
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:90%;
+    max-width: 500px;
+    border: 1px solid red;
+    background-color: blanchedalmond;
+}

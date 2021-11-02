@@ -1,47 +1,92 @@
 export const typeDefs = `
   type Query {
-    message: String
-    widgets: [Widget]
+    transactions:[Transaction]
+    users:[User]
   }
-
+  
   type Mutation {
-    insertWidget(widget: InsertWidget): Widget
-    replaceWidget(widget: ReplaceWidget): Widget
-    deleteWidget(widgetId: ID): Widget
-    deleteWidgets(widgetIds: [ID]): [Widget]
+    newTransaction(transaction: NewTransaction): String
+    updateTransaction(transaction: UpdateTransaction): String
+    newUser(user: NewUser): String
+    updateUser(user: UpdateUser): String
   }
 
-  type Subscription {
-    widgetInserted: Widget
-    widgetDeleted: Widget
+  enum Status {
+    pending
+    completed
+    rejected
+    cancelled
   }
 
-  type Widget {
-    id: ID
-    name: String
-    description: String!
-    color: String
-    size: String
-    price: Float
-    quantity: Int
+   enum Role {
+    admin 
+    priest
+    servant
+    merchant
+    client
+  }
+  type Transaction {
+      
+      id: String 
+      timeCreated:String
+      timeUpdated:String
+      from: String 
+      to:String
+      amount: Float
+      status: Status
   }
 
-  input InsertWidget {
-    name: String
-    description: String
-    color: String
-    size: String
-    price: Float
-    quantity: Int
+  type User {
+      id: String
+      availableBalance :Float
+      firstName:String
+      lastLogin:String
+      lastName:String
+      pendingBalance:Float
+      role:Role
+      totalBalance:Float
+      email:String
   }
 
-  input ReplaceWidget {
-    id: ID
-    name: String
-    description: String
-    color: String
-    size: String
-    price: Float
-    quantity: Int
-  }  
+  input NewUser {
+      available_balance :Float
+      firstName:String!
+      lastLogin:String
+      lastName:String!
+      pendingBalance:Float
+      role:Role!
+      totalBalance:Float
+      email:String!
+  }
+
+  input NewTransaction {
+      amount: Float!
+      from: String!
+      status: Status!
+      to:String!
+      timeCreated:String!
+  }
+
+  input UpdateTransaction {
+      id: String!
+      amount: Float!
+      from: String!
+      status: Status!
+      to:String!
+      timeCreated:String!
+      timeUpdated:String!
+  }
+
+    input UpdateUser {
+      id: String!
+      availableBalance :Float!
+      firstName:String!
+      lastLogin:String!
+      lastName:String!
+      pendingBalance:Float!
+      role:Role!
+      totalBalance:Float!
+      email:String!
+  }
+ 
 `;
